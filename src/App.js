@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import Home from './components/shared/Home';
+import Nomatch from './components/shared/Nomatch';
+import NavBar from './components/shared/Navbar';
+import Debug from './components/sheets/Debug';
+import Git from './components/sheets/Git';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = ({}) => (
+  <>
+    <NavBar />
+    <Switch>
+      <Route exact path='/' component={Home} />
+      <Route exact path='/debug' component={Debug} />
+      <Route exact path='/git' component={Git} />
+      <Route component={Nomatch} />
+    </Switch>
+  </>
+)
 
 export default App;
