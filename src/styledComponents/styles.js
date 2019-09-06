@@ -11,3 +11,8 @@ export const BoldColor = styled.b`
  color: #A694E3;
 `
 
+export const CopyRight = styled.p`
+ color: #BAB9BB;
+ text-align: right;
+`
+
