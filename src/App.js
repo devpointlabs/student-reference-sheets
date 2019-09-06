@@ -6,17 +6,20 @@ import NavBar from './components/shared/Navbar';
 import Debug from './components/sheets/Debug';
 import GitFlows from './components/sheets/GitFlows';
 import GitRefs from './components/sheets/GitRefs';
+import { Container } from 'semantic-ui-react';
 
 const App = ({}) => (
   <>
     <NavBar />
-    <Switch>
-      <Route exact path='/' component={Home} />
-      <Route exact path='/debug' component={Debug} />
-      <Route exact path='/git-flows' component={GitFlows} />
-      <Route exact path='/git-refs' component={GitRefs} />
-      <Route component={Nomatch} />
-    </Switch>
+    <Container>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/debug' component={Debug} />
+        <Route exact path='/git-flows' component={GitFlows} />
+        <Route exact path='/git-refs' component={GitRefs} />
+        <Route component={Nomatch} />
+      </Switch>
+    </Container>
   </>
 )
 
