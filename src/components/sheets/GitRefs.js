@@ -1,9 +1,12 @@
 import React from 'react';
-import { Header, Grid, Accordion, Icon } from 'semantic-ui-react';
+import { Header, Grid, Accordion, Icon, Image } from 'semantic-ui-react';
+import { BoldColor } from '../../styledComponents/styles';
+import Logo from '../../images/dpl-logo.png';
 
 const GitRefs = () => (
   <>
-    <Header>Git References</Header>
+  <Image src={Logo} centered />
+    <Header as='h1' textAlign='center'><BoldColor>Git References</BoldColor></Header>
     <Grid columns={2} stackable>
       <Grid.Column>
         <Accordion styled>
@@ -168,6 +171,9 @@ const GitRefs = () => (
         </Accordion>
       </Grid.Column>
     </Grid>
+    <br />
+    <br />
+    <br />
   </>
 )
 

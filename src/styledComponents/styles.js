@@ -16,3 +16,8 @@ export const CopyRight = styled.p`
  text-align: right;
 `
 
+export const FooterContainer = styled.footer`
+ cposition: absolute;
+ bottom: 0;
+`
+
