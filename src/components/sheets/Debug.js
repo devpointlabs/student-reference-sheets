@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Image, List, Container } from 'semantic-ui-react';
+import { Header, Image, List } from 'semantic-ui-react';
 import Logo from '../../images/dpl-logo.png';
 import { SheetContainer, BoldColor } from '../../styledComponents/styles';
 

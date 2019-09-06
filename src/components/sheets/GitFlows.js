@@ -1,15 +1,14 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState } from 'react';
 import { Header, Grid, Accordion, Icon, Image } from 'semantic-ui-react';
 import { BoldColor } from '../../styledComponents/styles';
 import Logo from '../../images/dpl-logo.png';
 
 const GitFlows = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [initialPushOpen, setInitialPushOpen] = useState(true);
+  const [continueOpen, setContinueOpen] = useState(true);
+  const [collabFlowStartOpen, setCollabFlowStartOpen] = useState(true);
+  const [collabFlowOpen, setCollabFlowOpen] = useState(true);
   
-  function handleClick(e, titleProps) {
-    const { index } = titleProps
-    setActiveIndex(activeIndex === index ? -1 : index)
-  }  
 
   return (
     <>
@@ -17,15 +16,15 @@ const GitFlows = () => {
       <Header as='h1' textAlign='center'><BoldColor>Git Flows</BoldColor></Header>
       <Grid columns={2} stackable>
         <Grid.Column>
-          <Accordion styled exclusive={false}>
+          <Accordion styled>
             <Accordion.Title
-              active={activeIndex === 0}
-              index={0}
+              active={initialPushOpen}
+              onClick={() => setInitialPushOpen(!initialPushOpen)}
             >
               Initial Push
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={activeIndex === 0}>
+            <Accordion.Content active={initialPushOpen}>
               <p>
                 Step to push your repository to Github for the first time.
               </p>
@@ -54,15 +53,15 @@ const GitFlows = () => {
             </Accordion.Content>
           </Accordion>
           <br />
-          <Accordion styled exclusive={false}>
+          <Accordion styled>
             <Accordion.Title
-              active={true}
-              index={1}
+              active={continueOpen}
+              onClick={() => setContinueOpen(!continueOpen)}
             >
               Continue Changes 
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={true}>
+            <Accordion.Content active={continueOpen}>
               <p>
                 Flow to update Github with new changes. 
                 <br />
@@ -81,13 +80,13 @@ const GitFlows = () => {
         <Grid.Column>
           <Accordion styled>
             <Accordion.Title
-              active={true}
-              index={2}
+              active={collabFlowStartOpen}
+              onClick={() => setCollabFlowStartOpen(!collabFlowStartOpen)}
             >
               Collab Flow Start
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={true}>
+            <Accordion.Content active={collabFlowStartOpen}>
               <p>
                 One team member creates the initial project, push it up to Github with Initial Push Steps. Got into the Github repository settings and add all contributors. 
               </p>
@@ -103,13 +102,13 @@ const GitFlows = () => {
           <br />
           <Accordion styled>
             <Accordion.Title
-              active={true}
-              index={3}
+              active={collabFlowOpen}
+              onClick={() => setCollabFlowOpen(!collabFlowOpen)}
             >
               Collab Flow
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={true}>
+            <Accordion.Content active={collabFlowOpen}>
               <p>
                 Collaborative work efforts to have the most updated code. 
                 <br />

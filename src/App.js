@@ -8,7 +8,7 @@ import GitRefs from './components/sheets/GitRefs';
 import { Container } from 'semantic-ui-react';
 import Footer from './components/shared/Footer';
 
-const App = ({}) => (
+const App = () => (
   <>
     <NavBar />
     <Container>
