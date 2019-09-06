@@ -14,9 +14,14 @@ const NavBar = () => (
         Debug 
       </Menu.Item>
     </Link>
-    <Link to="/git">
+    <Link to="/git-flows">
       <Menu.Item>
-        Git Cheatsheet
+        Git Flows
+      </Menu.Item>
+    </Link>
+    <Link to="/git-refs">
+      <Menu.Item>
+        Git References
       </Menu.Item>
     </Link>
   </Menu>

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
 
-const Git = () => (
+const GitRefs = () => (
   <>
-    <Header>Git</Header>
+    <Header>Git References</Header>
+
   </>
 )
 
-export default Git;
+export default GitRefs;
