@@ -4,6 +4,7 @@ import { BoldColor } from '../../styledComponents/styles';
 import Logo from '../../images/dpl-logo.png';
 
 const GitRefs = () => {
+  const [remoteOpen, setRemoteOpen] = useState(true);
   const [branchingOpen, setbranchingOpen] = useState(true);
   const [vimOpen, setVimOpen] = useState(true);
   const [infoOpen, setInfoOpen] = useState(true);
@@ -16,6 +17,33 @@ const GitRefs = () => {
       <Header as='h1' textAlign='center'><BoldColor>Git References</BoldColor></Header>
       <Grid columns={2} stackable>
         <Grid.Column>
+          <Accordion styled>
+            <Accordion.Title
+              active={remoteOpen}
+              onClick={() => setRemoteOpen(!remoteOpen)}
+            >
+              Remotes
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={remoteOpen}>
+              <p>
+                Connection between the local machine repo and GitHub Repo.
+              </p>
+              <code>$ git remote -v</code>
+              <p>
+                Lists all the remotes that are connected to the local repo.
+              </p>
+              <code>$ git remote add origin *paste ssh</code>
+              <p>
+                Add remote named origin with the given ssh url.
+              </p>
+              <code>$ git remote rm *name of the remote</code>
+              <p>
+                Removes the connection from the give remote name.
+              </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
           <Accordion styled>
             <Accordion.Title
               active={branchingOpen}
