@@ -68,8 +68,14 @@ const GitFlows = () => {
                 * Be sure to save all the files and test that the code works. Don’t push broken code.
               </p>
               <code>$ git add .</code>
+              <br />
+              <br />
               <code>$ git commit -m “What you did”</code>
+              <br />
+              <br />
               <code>$ git push origin master</code>
+              <br />
+              <br />
               <p>
                 or
               </p>
@@ -117,6 +123,7 @@ const GitFlows = () => {
                 * Be sure to save all the files and test that the code works. Don’t push broken code.
               </p>
               <code>$ git add .</code>
+              <br />
               <br />
               <code>$ git commit -m “What you did”</code>
               <p></p>
