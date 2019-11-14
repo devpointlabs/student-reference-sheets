@@ -25,6 +25,23 @@ const Debug = () => (
         </List.Item>
         <List.Item>
           Utilize your neighbor, lecture notes, slack, console, devtools, prys and debuggers. 
+          <List>
+            <List.Item><b>Chain of Command for Questions</b></List.Item>
+            <List as='ol'>
+              <List.Item as='li' value='↓'>
+                Yourself, do the U in D.E.B.U.G
+              </List.Item>
+              <List.Item as='li' value='↓'>
+                Peers, ask your neighbor if they have any insight on the matter
+              </List.Item>
+              <List.Item as='li' value='↓'>
+                TAs, get some help from an experienced developer
+              </List.Item>
+              <List.Item as='li' value='↓'>
+                Instructors, the ace in the hole, the distributor of course materials
+              </List.Item>
+            </List>
+          </List>
         </List.Item>
         <List.Item>
           Google the error or what you want to do, or how to do it.
