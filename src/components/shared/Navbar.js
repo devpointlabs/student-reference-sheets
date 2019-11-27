@@ -19,6 +19,11 @@ const NavBar = () => (
         Git References
       </Menu.Item>
     </Link>
+    <Link to="/rails-refs">
+      <Menu.Item>
+        Rails References
+      </Menu.Item>
+    </Link>
   </Menu>
 );
 
