@@ -71,7 +71,7 @@ const Rails = () => {
                 This generates the model and the migration file. Be sure the Model name is SINGULAR. 
               </p>
               <p>
-                Models are singular and Controllers are plural.
+                * Models are singular and Controllers are plural.
               </p>
               <code>$ bundle exec rails g model model_name attr:datatype parent:belongs_to</code>
               <p>
@@ -100,7 +100,7 @@ const Rails = () => {
                 This creates the controllers and the view pages for the index show, edit and new actions. This also skips the pre-generated routes and we will make our own routes.
               </p>
               <p>
-                Models are singular and Controllers are plural.
+                *Models are singular and Controllers are plural.
               </p>
               <p>
                 If you mess up on the controller, you can delete it with the following command and retry the above command.  
@@ -129,21 +129,40 @@ const Rails = () => {
               <p>
                 This defines the root page or landing page of when you first land on the website.
               </p>
-              <code>$ git log</code>
+              <code>resources :controller_names</code>
               <p>
-                Show commit history.
+                This generates all the routes for the actions index, show, new, edit, create, update and destroy.
               </p>
-              <code>$ git log --oneline</code>
               <p>
-                Condensed commit history.
+                You can include or exclude certain actions like this:
               </p>
-              <code>$ git diff</code>
+              <code>resources :controller_names, only: [:index, :new, :create]</code>
               <p>
-                Show file difference that are not yet staged.
+                or
               </p>
-              <code>$ git diff --staged</code>
+              <code>resources :controller_names, except: [:show, :edit, :update]</code>
+              <br />
+              <br />
+              <br />
               <p>
-                Show file differences that are staged.
+                If you are showing a parent to child view you may need to do embedded routes.
+              </p>
+              <code>
+                resources :parents do 
+                <br />  
+                &nbsp; resources :child
+                <br /> 
+                end
+              </code>
+              <p>
+                * Don't go more than two levels deep because it will get messy, do another set of embedded routes when needed.
+              </p>
+              <p>
+                Often times you would want to make your own custom routes which follows this pattern:
+              </p>
+              <code>HTTPVERB '/something', to: 'controllers#action', as: 'anotherThing'</code>
+              <p>
+                You would specify what HTTP verb action you want to preform, what the url to get to the route, where the route goes to and how to reference to path in ruby.
               </p>
             </Accordion.Content>
           </Accordion>
