@@ -5,11 +5,11 @@ import Logo from '../../images/dpl-logo.png';
 
 const Rails = () => {
   const [initialPro, setInitialProOpen] = useState(true);
-  const [branchingOpen, setbranchingOpen] = useState(true);
-  const [vimOpen, setVimOpen] = useState(true);
-  const [infoOpen, setInfoOpen] = useState(true);
-  const [stashingOpen, setStashingOpen] = useState(true);
-  const [altOpen, setAltOpen] = useState(true);
+  const [railsModel, setRailsModelOpen] = useState(true);
+  const [railsController, setRailsControllerOpen] = useState(true);
+  const [railsRoutes, setRailsRoutesOpen] = useState(true);
+  const [migrations, setMigrationsOpen] = useState(true);
+  const [cactions, setCactionsOpen] = useState(true);
 
   return (
     <>
@@ -58,13 +58,13 @@ const Rails = () => {
           <br />
           <Accordion styled>
             <Accordion.Title
-              active={branchingOpen}
-              onClick={() => setbranchingOpen(!branchingOpen)}
+              active={railsModel}
+              onClick={() => setRailsModelOpen(!railsModel)}
             >
               Rails Model 
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={branchingOpen}>
+            <Accordion.Content active={railsModel}>
               <p>
                 After your done planning, now its time to build the instructions for the tables.
               </p>
@@ -93,13 +93,13 @@ const Rails = () => {
           <br />
           <Accordion styled>
             <Accordion.Title
-              active={vimOpen}
-              onClick={() => setVimOpen(!vimOpen)}
+              active={railsController}
+              onClick={() => setRailsControllerOpen(!railsController)}
             >
-              Vim
+              Rails Controller
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={vimOpen}>
+            <Accordion.Content active={railsController}>
               <code>$ git commit</code>
               <p>
                 Use vim for a commit message.
@@ -137,13 +137,13 @@ const Rails = () => {
         <Grid.Column>
           <Accordion styled>
             <Accordion.Title
-              active={infoOpen}
-              onClick={() => setInfoOpen(!infoOpen)}
+              active={railsRoutes}
+              onClick={() => setRailsRoutesOpen(!railsRoutes)}
             >
-              Info Commands
+              Rails Routes
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={infoOpen}>
+            <Accordion.Content active={railsRoutes}>
               <code>$ git status</code>
               <p>
                 List progress of file changes.
@@ -169,13 +169,13 @@ const Rails = () => {
           <br />
           <Accordion styled>
             <Accordion.Title
-              active={stashingOpen}
-              onClick={() => setStashingOpen(!stashingOpen)}
+              active={migrations}
+              onClick={() => setMigrationsOpen(!migrations)}
             >
-              Stashing 
+              Migrations 
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={stashingOpen}>
+            <Accordion.Content active={migrations}>
               <p>
                 Set aside code versions.
               </p>
@@ -200,13 +200,13 @@ const Rails = () => {
           <br />
           <Accordion styled>
             <Accordion.Title
-               active={altOpen}
-               onClick={() => setAltOpen(!altOpen)}
+               active={cactions}
+               onClick={() => setCactionsOpen(!cactions)}
             >
-              Alternatives 
+              Controller Actions 
               <Icon name='dropdown' />
             </Accordion.Title>
-            <Accordion.Content active={altOpen}>
+            <Accordion.Content active={cactions}>
               <p>
                 Instead of fetching and rebasing you would do pull and merge, which is another way to get your code up to date and combine versions.
               </p>
