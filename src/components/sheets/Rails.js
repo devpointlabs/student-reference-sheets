@@ -45,11 +45,9 @@ const Rails = () => {
               <p>
                 This creates both the development and testing database. You can use rake or rails.
               </p>
-              <br />
               <p>
                 Then follow the git flow for the initial push but you don't need the git init part since rails does that for you.
               </p>
-              <br />
               <p>
                 The final house keeping is to plan out how the tables look like with what it has and types of associations it has. But way is to draw it out and plan it with your group.
               </p>
@@ -72,7 +70,6 @@ const Rails = () => {
               <p>
                 This generates the model and the migration file. Be sure the Model name is SINGULAR. 
               </p>
-              <br />
               <p>
                 Models are singular and Controllers are plural.
               </p>
@@ -80,13 +77,8 @@ const Rails = () => {
               <p>
                 If the table has a belongs to association then you would state that here so the foreign key is made.
               </p>
-              <br />
               <p>
                 After you generate a model, and check to make sure everything is correct in the migration files are correct then run:
-              </p>
-              <code>$ bundle exec rake db:migrate</code>
-              <p>
-                This applies the instructions made from the migration file and apply them to the database.
               </p>
             </Accordion.Content>
           </Accordion>
@@ -100,36 +92,22 @@ const Rails = () => {
               <Icon name='dropdown' />
             </Accordion.Title>
             <Accordion.Content active={railsController}>
-              <code>$ git commit</code>
               <p>
-                Use vim for a commit message.
+                Now the next step is to generate the controllers, the traffic directors of the app.
               </p>
-              <code>$ git commit --amend</code>
+              <code>$ bundle exec rails g controller controller_names index show new edit --skip-routes</code>
               <p>
-                Updates the latest commit message with vim.
+                This creates the controllers and the view pages for the index show, edit and new actions. This also skips the pre-generated routes and we will make our own routes.
               </p>
               <p>
-                Vim has 3 modes: <i>Command, Insert, Visual</i>.
-                <br />
-                Entering into vim you will be in <i>Command</i> mode. 
-                <br />
-                To be able to type you would need to go to <i>Insert</i> mode.
+                Models are singular and Controllers are plural.
               </p>
-              <code>Type: I</code>
               <p>
-                Bottom of the terminal should say:
-                <br />
-                -- Insert --
-                <br />
-                Then update or add the commit message.
+                If you mess up on the controller, you can delete it with the following command and retry the above command.  
               </p>
-              <code>Type: ESC</code>
+              <code>$ bundle exec rails d controller controller_names</code>
               <p>
-                This gets you out of Insert mode and into command mode.
-              </p>
-              <code>Type: :wq      shift + ; + w + q</code>
-              <p>
-                Saves and quits. 
+                This deletes the controller and the associated views.
               </p>
             </Accordion.Content>
           </Accordion>
@@ -144,9 +122,12 @@ const Rails = () => {
               <Icon name='dropdown' />
             </Accordion.Title>
             <Accordion.Content active={railsRoutes}>
-              <code>$ git status</code>
               <p>
-                List progress of file changes.
+                Inside of the <code>config</code> folder you will find <code>routes.rb</code>. This houses all the routes leading to the controller action. Common items you will see here are:
+              </p>
+              <code>root 'controller#action'</code>
+              <p>
+                This defines the root page or landing page of when you first land on the website.
               </p>
               <code>$ git log</code>
               <p>
