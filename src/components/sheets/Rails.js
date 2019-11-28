@@ -51,7 +51,7 @@ const Rails = () => {
               </p>
               <br />
               <p>
-                The final house keeping is to plan out how the tables look like with what it hhas and types of associations it has. But way is to draw it out and plan it with your group.
+                The final house keeping is to plan out how the tables look like with what it has and types of associations it has. But way is to draw it out and plan it with your group.
               </p>
             </Accordion.Content>
           </Accordion>
@@ -61,28 +61,32 @@ const Rails = () => {
               active={branchingOpen}
               onClick={() => setbranchingOpen(!branchingOpen)}
             >
-              Branching
+              Rails Model 
               <Icon name='dropdown' />
             </Accordion.Title>
             <Accordion.Content active={branchingOpen}>
               <p>
-                When you want to work in a pocket dimension.
+                After your done planning, now its time to build the instructions for the tables.
               </p>
-              <code>$ git branch</code>
+              <code>$ bundle exec rails g model model_name attr:datatype attr:datatype</code>
               <p>
-                Lists all the local branches and current. working branch
+                This generates the model and the migration file. Be sure the Model name is SINGULAR. 
               </p>
-              <code>$ git checkout branch_name</code>
+              <br />
               <p>
-                Switch between branches.
+                Models are singular and Controllers are plural.
               </p>
-              <code>$ git checkout -b branch_name</code>
+              <code>$ bundle exec rails g model model_name attr:datatype parent:belongs_to</code>
               <p>
-                Create and switch into a new branch.
+                If the table has a belongs to association then you would state that here so the foreign key is made.
               </p>
-              <code>$ git branch -d branch_name</code>
+              <br />
               <p>
-                Delete the branch and everything in it.
+                After you generate a model, and check to make sure everything is correct in the migration files are correct then run:
+              </p>
+              <code>$ bundle exec rake db:migrate</code>
+              <p>
+                This applies the instructions made from the migration file and apply them to the database.
               </p>
             </Accordion.Content>
           </Accordion>
