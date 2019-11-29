@@ -177,24 +177,30 @@ const Rails = () => {
             </Accordion.Title>
             <Accordion.Content active={migrations}>
               <p>
-                Set aside code versions.
+                Sometime you want to make changes into the table of the database. Creating a migrations is the best bet.
               </p>
-              <code>$ git stash</code>
+              <code>$ bundle exec rails g migration look_up_what_goes_here</code>
               <p>
-                Put all untracked code in a pocket. dimension.
+                This will generate a migration file to apply changes.
               </p>
-              <code>$ git stash list</code>
               <p>
-                Show stashed items.
+                Be sure to look up how to create the migration and what to put in the chhange method in the file. Not all migrations are the same.
               </p>
-              <code>$ git stash pop</code>
               <p>
-                Restore most recent stashed item.
+                It is best practice to always run migrations rather than deleting and starting over.
               </p>
-              <code>$ git stash drop </code>
               <p>
-                Deletes most recent stashed item.
+                For example to add a reference to a child component, you would do:
               </p>
+              <code>
+                $ bundle exec rails g migration AddParentToChilds parent:references
+              </code>
+              <p>
+                Then in the migration file in the change method there would be
+              </p>
+              <code>
+                add_reference :childs, :parent, foreign_key: true
+              </code>
             </Accordion.Content>
           </Accordion>
           <br />
