@@ -214,16 +214,74 @@ const Rails = () => {
             </Accordion.Title>
             <Accordion.Content active={cactions}>
               <p>
-                Instead of fetching and rebasing you would do pull and merge, which is another way to get your code up to date and combine versions.
               </p>
-              <code>$ git pull origin master</code>
-              <p>
-                Incorporates changes from Github.
-              </p>
-              <code>$ git merge branch_name</code>
-              <p>
-                Combines branch version to the current working branch. 
-              </p>
+              <code>
+              # READ - GET 
+
+# index action - all of the record of the table 
+#   def index
+#     @model_names = Model_name.all
+#     # set into instance variable and grabs all the records
+#   end
+
+# show action - show a single record, id , id is which record you want to see 
+# def show
+#   @model_name = Model_name.find(params[:id])
+# end
+
+# new action - display the new record form, creates the record in memory 
+#   def new 
+#     @model_name = Model_name.new
+#   end
+
+# edit action - display te edit record form, id, which record to update
+#   def edit
+#     @model_name = Model_name.find(params[:id])
+#   end
+
+# Create / POST 
+# creates a record in db from the new action.
+
+# def create 
+#   @model_name = Model_name.new(model_name_params)
+#   if @model_name.save
+#     do something or do somewhere
+#   else
+#     render :new
+#   end
+# end
+
+# model_name_params
+# pass certain attr. 
+#   private 
+#     def model_name_params
+#       params.require(:model_name).permit(:attr, :attr2, :everything the table has)
+#     end
+
+# Update / PUT / PATCH
+# - edit a record , from edit from , id , which one to update
+
+# def update 
+#   @model_name = Model_name.find(params[:id])
+#   if @model_name.update(model_name_params)
+#     do something
+#   else
+#     render :edit
+#   end
+# end
+
+# Destroy / DELETE 
+#  delete the entire record, id, which one to delete 
+
+# def destroy
+#   @model_name = Model_name.find(params[:id])
+#   @model_name.destroy
+
+#   or 
+#   Model_name.find(params[:id]).destroy
+
+# end
+              </code>
             </Accordion.Content>
           </Accordion>
         </Grid.Column>
