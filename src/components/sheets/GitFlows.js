@@ -14,6 +14,7 @@ const GitFlows = () => {
     <>
     <Image src={Logo} centered />
       <Header as='h1' textAlign='center'><BoldColor>Git Flows</BoldColor></Header>
+      <br />
       <Grid columns={2} stackable>
         <Grid.Column>
           <Accordion styled>

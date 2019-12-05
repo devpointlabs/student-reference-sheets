@@ -10,11 +10,14 @@ const Rails = () => {
   const [railsRoutes, setRailsRoutesOpen] = useState(true);
   const [migrations, setMigrationsOpen] = useState(true);
   const [cactions, setCactionsOpen] = useState(true);
+  const [embeddControl, setembeddControlOpen] = useState(true);
+  const [auth, setAuthOpen] = useState(true);
 
   return (
     <>
     <Image src={Logo} centered />
       <Header as='h1' textAlign='center'><BoldColor>Ruby on Rails References</BoldColor></Header>
+      <br />
       <Grid columns={2} stackable>
         <Grid.Column>
           <Accordion styled>
@@ -111,8 +114,7 @@ const Rails = () => {
               </p>
             </Accordion.Content>
           </Accordion>
-        </Grid.Column>
-        <Grid.Column>
+          <br />
           <Accordion styled>
             <Accordion.Title
               active={railsRoutes}
@@ -203,7 +205,8 @@ const Rails = () => {
               </code>
             </Accordion.Content>
           </Accordion>
-          <br />
+        </Grid.Column>
+        <Grid.Column>
           <Accordion styled>
             <Accordion.Title
                active={cactions}
@@ -214,74 +217,263 @@ const Rails = () => {
             </Accordion.Title>
             <Accordion.Content active={cactions}>
               <p>
+                Now it is time to fill out the actions. Actions are what you can do and where you can go in the app.
+              </p>
+              <p>
+                READ / GET
               </p>
               <code>
-              # READ - GET 
-
-# index action - all of the record of the table 
-#   def index
-#     @model_names = Model_name.all
-#     # set into instance variable and grabs all the records
-#   end
-
-# show action - show a single record, id , id is which record you want to see 
-# def show
-#   @model_name = Model_name.find(params[:id])
-# end
-
-# new action - display the new record form, creates the record in memory 
-#   def new 
-#     @model_name = Model_name.new
-#   end
-
-# edit action - display te edit record form, id, which record to update
-#   def edit
-#     @model_name = Model_name.find(params[:id])
-#   end
-
-# Create / POST 
-# creates a record in db from the new action.
-
-# def create 
-#   @model_name = Model_name.new(model_name_params)
-#   if @model_name.save
-#     do something or do somewhere
-#   else
-#     render :new
-#   end
-# end
-
-# model_name_params
-# pass certain attr. 
-#   private 
-#     def model_name_params
-#       params.require(:model_name).permit(:attr, :attr2, :everything the table has)
-#     end
-
-# Update / PUT / PATCH
-# - edit a record , from edit from , id , which one to update
-
-# def update 
-#   @model_name = Model_name.find(params[:id])
-#   if @model_name.update(model_name_params)
-#     do something
-#   else
-#     render :edit
-#   end
-# end
-
-# Destroy / DELETE 
-#  delete the entire record, id, which one to delete 
-
-# def destroy
-#   @model_name = Model_name.find(params[:id])
-#   @model_name.destroy
-
-#   or 
-#   Model_name.find(params[:id]).destroy
-
-# end
+                def index
+                  <br />  
+                  &nbsp;@model_names = Model_name.all
+                  <br />
+                end
               </code>
+              <p>
+                This action creates and sets a instance variable and grabs all the records of a Table.
+              </p>
+              <code>
+                def show
+                  <br />  
+                  &nbsp;@model_name = Model_name.find(params[:id])
+                  <br />
+                end
+              </code>
+              <p>
+                Shows a single record with a given parameter of id. The id is which record you want to return.
+              </p>
+              <code>
+                def new 
+                <br />  
+                &nbsp;@model_name = Model_name.new
+                <br />
+                end
+              </code>
+              <p>
+                The new action displates the new record form and creates a record only in memory.
+              </p>
+              <code>
+                def edit
+                  <br />  
+                  &nbsp;
+                  @model_name = Model_name.find(params[:id])
+                  <br />
+                end
+              </code>
+              <p>
+                The edit action displats the edit record form. Needs an id to know which record to update
+              </p>
+              <br />
+              <p>
+                Create / POST 
+              </p>
+              <code>
+                def create 
+                  <br />  
+                  &nbsp;
+                  @model_name = Model_name.new(model_name_params)
+                  <br />  
+                  &nbsp;
+                  if @model_name.save
+                  <br />  
+                  &nbsp;
+                  &nbsp;
+                    do something or do somewhere
+                  <br />  
+                  &nbsp;
+                  else
+                  <br />  
+                  &nbsp;
+                  &nbsp;
+                    render :new
+                  <br />  
+                  end
+                end
+              </code>
+              <p>
+                Creates a record in the database from parameter passed in the new action.
+              </p>
+              <br />
+              <p>
+                Update / PUT / PATCH
+              </p>
+              <code>
+                def update 
+                  <br />  
+                  &nbsp;
+                  @model_name = Model_name.find(params[:id])
+                  <br />  
+                  &nbsp;
+                  if @model_name.update(model_name_params)
+                  <br />  
+                  &nbsp;
+                  &nbsp;
+                    do something
+                  <br />  
+                  &nbsp;
+                  else
+                  <br />  
+                  &nbsp;
+                  &nbsp;
+                    render :edit
+                  <br />  
+                  &nbsp;
+                  end
+                  <br />
+                end
+              </code>
+              <p>
+                Edit a record with the given id parameter.
+              </p>
+              <br />
+              <p>
+                Destroy / DELETE 
+              </p>
+              <code>
+                def destroy
+                  <br />  
+                  &nbsp;
+                  @model_name = Model_name.find(params[:id])
+                  <br />  
+                  &nbsp;
+                  @model_name.destroy
+                  <br />  
+                  &nbsp;
+                  send somewhere
+                  <br />  
+                  &nbsp;
+                  or 
+                  <br />  
+                  &nbsp;
+                  Model_name.find(params[:id]).destroy
+                end
+              </code>
+              <p>
+                Delete the entire record with a given id parameter.
+              </p>
+              <br />
+              <code>
+                private 
+                  <br />  
+                  &nbsp;
+                  def model_name_params
+                  <br />  
+                  &nbsp;
+                  &nbsp;
+                    params.require(:model_name).permit(:attr, :attr2, :everything the table has)
+                  <br />  
+                  &nbsp;
+                  end
+              </code>
+              <p>
+                Permitted parameter to be passed into the model.
+              </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={embeddControl}
+              onClick={() => setembeddControlOpen(!embeddControl)}
+            >
+              Child Controller
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={embeddControl}>
+              <p>
+                If there is a parent to cild relationship then the child controller will follow a similiar but different pattern.
+              </p>
+              <code>Model_name.all</code>
+              <p>
+                Anything with the capital letter Model_name will change to:
+              </p>
+              <code>
+                @parent.children(s)
+              </code>
+              <p>
+                The parents instance variable and calling its child plural.
+              </p>
+              <br />
+              <p>
+                * The index method in a child controller does not have the .all at the end.
+              </p>
+              <br />
+              <p>
+                To define what at parent is, you would need to do a before action and define the method in the private section.
+              </p>
+              <code>
+                before_action :set_parent 
+              </code>
+              <p>
+                .
+                <br />
+                .
+                <br />
+                .
+              </p>
+              <code>
+                private 
+                  <br />  
+                  &nbsp;
+                  def set_parent
+                    <br />  
+                    &nbsp;
+                    &nbsp;
+                    @parent = Model_name_of_parent.find(params[:parent_id])
+                    <br />  
+                    &nbsp;
+                  end
+              </code>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={auth}
+              onClick={() => setAuthOpen(!auth)}
+            >
+              Authentication  
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={auth}>
+              <p>
+                To have authentication and a user base as well as everything that come with the devise gem. You first have to add and bundle the gem.
+              </p>
+              <code>
+                gem 'devise'
+              </code>
+              <code>
+                $ bundle
+              </code>
+              <p>
+                Next you would need to install devise to activate all the features.
+              </p>
+              <code>
+                $ bundle exec rail g devise:install
+              </code>
+              <p>
+                Next is to generate a model with devise.
+              </p>
+              <code>
+                $ bundle exec rails g devise User
+              </code>
+              <p>
+                This will attach devise and all of the features to the given model. 
+              </p>
+              <br />
+              <p>
+                If you have user authentication then the direct child of the authenticated table will change the pattern of the controller.
+              </p>
+              <code>@parent.children(s)</code>
+              <p>
+                Everything that would be the parent to child syntax would change to:
+              </p>
+              <code>
+                current_user.children(s)
+              </code>
+              <p>
+                The current logged in users, child plural elements. current_user is already defined by devise.
+              </p>
             </Accordion.Content>
           </Accordion>
         </Grid.Column>

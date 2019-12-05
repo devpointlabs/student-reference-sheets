@@ -15,6 +15,7 @@ const GitRefs = () => {
     <>
     <Image src={Logo} centered />
       <Header as='h1' textAlign='center'><BoldColor>Git References</BoldColor></Header>
+      <br />
       <Grid columns={2} stackable>
         <Grid.Column>
           <Accordion styled>
