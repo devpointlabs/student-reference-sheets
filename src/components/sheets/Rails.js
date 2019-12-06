@@ -405,7 +405,7 @@ const Rails = () => {
             </Accordion.Title>
             <Accordion.Content active={embeddControl}>
               <p>
-                If there is a parent to cild relationship then the child controller will follow a similiar but different pattern.
+                If there is a parent to child relationship then the child controller will follow a similiar but different pattern.
               </p>
               <code>Model_name.all</code>
               <p>
