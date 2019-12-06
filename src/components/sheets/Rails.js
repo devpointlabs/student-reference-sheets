@@ -365,6 +365,11 @@ const Rails = () => {
                   <br />  
                   &nbsp;
                   Model_name.find(params[:id]).destroy
+                  <br />  
+                  &nbsp;
+                  send somewhere
+                  <br />  
+                  &nbsp;
                 end
               </code>
               <p>
