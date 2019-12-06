@@ -81,7 +81,24 @@ const Rails = () => {
                 If the table has a belongs to association then you would state that here so the foreign key is made.
               </p>
               <p>
-                After you generate a model, and check to make sure everything is correct in the migration files are correct then run:
+                After you generate a model, and check to make sure everything is correct in the migration files are correct.
+              </p>
+              <p>
+                If you mess up on the model, you can delete it with the following command and retry the above command.  
+              </p>
+              <code>$ bundle exec rails d model model_name</code>
+              <p>
+                This deletes the model and the associated migration.
+              </p>
+              <br />
+              <p>
+                When everything is correct run a:
+              </p>
+              <code>
+                $ bundle exec rake db:migrate
+              </code>
+              <p>
+                This apply the instructions of the migration file into the database.
               </p>
             </Accordion.Content>
           </Accordion>
@@ -197,6 +214,8 @@ const Rails = () => {
               <code>
                 $ bundle exec rails g migration AddParentToChilds parent:references
               </code>
+              <br />
+              <br />
               <p>
                 Then in the migration file in the change method there would be
               </p>
@@ -442,14 +461,18 @@ const Rails = () => {
               <code>
                 gem 'devise'
               </code>
+              <br />
+              <br />
               <code>
                 $ bundle
               </code>
+              <br />
+              <br />
               <p>
                 Next you would need to install devise to activate all the features.
               </p>
               <code>
-                $ bundle exec rail g devise:install
+                $ bundle exec rails g devise:install
               </code>
               <p>
                 Next is to generate a model with devise.
