@@ -306,7 +306,9 @@ const Rails = () => {
                   &nbsp;
                     render :new
                   <br />  
+                  &nbsp;
                   end
+                  <br />
                 end
               </code>
               <p>
@@ -369,7 +371,6 @@ const Rails = () => {
                   &nbsp;
                   send somewhere
                   <br />  
-                  &nbsp;
                 end
               </code>
               <p>
