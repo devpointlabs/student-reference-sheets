@@ -13,7 +13,7 @@ const GitRefs = () => {
 
   return (
     <>
-    <Image src={Logo} centered />
+      <Image src={Logo} centered />
       <Header as='h1' textAlign='center'><BoldColor>Git References</BoldColor></Header>
       <br />
       <Grid columns={2} stackable>
