@@ -24,6 +24,11 @@ const NavBar = () => (
         Rails References
       </Menu.Item>
     </Link>
+    <Link to="/prod-steps">
+      <Menu.Item>
+        Production
+      </Menu.Item>
+    </Link>
   </Menu>
 );
 
