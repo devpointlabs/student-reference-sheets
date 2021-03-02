@@ -17,6 +17,7 @@ const Rails = () => {
     <>
     <Image src={Logo} centered />
       <Header as='h1' textAlign='center'><BoldColor>Ruby on Rails References</BoldColor></Header>
+      <Header as='h5' textAlign='center'><BoldColor>(With a Hint of React)</BoldColor></Header>
       <br />
       <Grid columns={2} stackable>
         <Grid.Column>
@@ -32,17 +33,27 @@ const Rails = () => {
               <p>
                 Housekeeping items to start a Ruby on Rails Project
               </p>
-              <code>$ rails new project_name -d postgresql --skip-turbolinks</code>
+              <code>$ rails new project_name -d postgresql --webpack=react <br /> --skip-turbolinks</code>
               <p>
-                Creates initial rails project with the postgresql database tool attached and do not install turbolinks.
+                Creates initial rails project with the postgresql database tool attached and do not install turbolinks. This also sets up our project to be able to run React.
               </p>
               <p>
-                Next step is to add all of the needed Gems in your GEMFILE then run a: 
+                Next step is to add all of the needed Gems and the react rails gem in your GEMFILE 
+              </p>
+              <code>gem 'react-rails'</code>
+              <p>
+                then run a:
               </p>
               <code>$ bundle</code>
               <p>
                 Short for bundle install and install all the gems in the project, be sure to check the gem documentation to see if there is any other configuration
               </p>
+              <p>
+                One of the things we do need to configure is the react gem, so it will configure and add files for react to run properly
+              </p>
+              <code>$ bundle exec rails g react:install</code>
+              <br />
+              <br />
               <br />
               <code>$ bundle exec rake db:create</code>
               <p>
@@ -115,9 +126,9 @@ const Rails = () => {
               <p>
                 Now the next step is to generate the controllers, the traffic directors of the app.
               </p>
-              <code>$ bundle exec rails g controller controller_names index show new edit --skip-routes</code>
+              <code>$ bundle exec rails g controller controller_names index show new edit --skip-template-engine --skip-routes</code>
               <p>
-                This creates the controllers and the view pages for the index show, edit and new actions. This also skips the pre-generated routes and we will make our own routes.
+                This creates the controllers and the view pages for the index show, edit and new actions. This also skips the pre-generated routes, and skips the rails views and we will make our own routes and our own components instead.
               </p>
               <p>
                 *Models are singular and Controllers are plural.
@@ -246,36 +257,47 @@ const Rails = () => {
                   <br />  
                   &nbsp;@model_names = Model_name.all
                   <br />
+                  &nbsp;render component: 'ModelNames', props:&#123; model_names: @model_names &#125;
+                  <br />
                 end
               </code>
               <p>
                 This action creates and sets a instance variable and grabs all the records of a Table.
               </p>
+              <br />
               <code>
                 def show
                   <br />  
                   &nbsp;@model_name = Model_name.find(params[:id])
+                  <br />
+                  &nbsp;render component: 'ModelName', props: &#123; model_name: @model_name &#125;
                   <br />
                 end
               </code>
               <p>
                 Shows a single record with a given parameter of id. The id is which record you want to return.
               </p>
+              <br />
               <code>
                 def new 
                 <br />  
                 &nbsp;@model_name = Model_name.new
+                <br />
+                &nbsp;render component: 'ModelNameNew', props: &#123; model_name: @model_name &#125;
                 <br />
                 end
               </code>
               <p>
                 The new action displates the new record form and creates a record only in memory.
               </p>
+              <br />
               <code>
                 def edit
                   <br />  
                   &nbsp;
                   @model_name = Model_name.find(params[:id])
+                  <br />
+                  &nbsp;render component: 'ModelNameEdit', props: &#123; model_name: @model_name &#125;
                   <br />
                 end
               </code>
@@ -304,7 +326,7 @@ const Rails = () => {
                   <br />  
                   &nbsp;
                   &nbsp;
-                    render :new
+                  render component: 'ModelNameNew', props: &#123; model_name: @model_name &#125;
                   <br />  
                   &nbsp;
                   end
@@ -336,7 +358,7 @@ const Rails = () => {
                   <br />  
                   &nbsp;
                   &nbsp;
-                    render :edit
+                  render component: 'ModelNameEdit', props:	&#123; model_name: @model_name &#125;
                   <br />  
                   &nbsp;
                   end
@@ -448,6 +470,14 @@ const Rails = () => {
                     <br />  
                     &nbsp;
                   end
+              </code>
+              <br />
+              <br />
+              <p>
+                You also would need to pass the parent in all of the render component as well such as:
+              </p>
+              <code>
+                render component: 'ModelNames', props: &#123; model_names: @model_names, parent: @parent &#125;
               </code>
             </Accordion.Content>
           </Accordion>
