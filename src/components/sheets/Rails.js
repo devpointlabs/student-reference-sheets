@@ -12,6 +12,7 @@ const Rails = () => {
   const [cactions, setCactionsOpen] = useState(true);
   const [embeddControl, setembeddControlOpen] = useState(true);
   const [auth, setAuthOpen] = useState(true);
+  const [appControl, setAppControlOpen] = useState(true);
 
   return (
     <>
@@ -233,6 +234,34 @@ const Rails = () => {
               <code>
                 add_reference :childs, :parent, foreign_key: true
               </code>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={appControl}
+              onClick={() => setAppControlOpen(!appControl)}
+            >
+              Application Controller
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={appControl}>
+              <p>
+                If we see the error of ActionController::InvalidAuthenticityToken when you submit a form, we either need to pass the csrf_token basically everywhere or we can have our rails app ignore it. 
+              </p>
+              <p>
+                Let's do that in our app/controllers/application_controller.rb
+              </p>
+              <code>
+                class ApplicationController &#60; ActionController&#x0003A;&#x0003A;Base
+                <br />&nbsp; protect_from_forgery with: :null_session
+                <br />end
+              </code>
+              <br />
+              <br />
+              <p>
+                This solve that error and allows you to submit forms.
+              </p>
             </Accordion.Content>
           </Accordion>
         </Grid.Column>
