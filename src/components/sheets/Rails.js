@@ -13,6 +13,8 @@ const Rails = () => {
   const [embeddControl, setembeddControlOpen] = useState(true);
   const [auth, setAuthOpen] = useState(true);
   const [appControl, setAppControlOpen] = useState(true);
+  const [railsCollab, setRailsCollabOpen] = useState(true);
+  const [dbCom, setDbComOpen] = useState(true);
 
   return (
     <>
@@ -71,6 +73,52 @@ const Rails = () => {
           <br />
           <Accordion styled>
             <Accordion.Title
+              active={railsCollab}
+              onClick={() => setRailsCollabOpen(!railsCollab)}
+            >
+              Rails Collab 
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={railsCollab}>
+              <p>
+                If you are working with others with a rails project, all team members should have the same ruby version. But if you all have different version follow the steps below after one team member does the initial rails project.
+              </p>
+              <p>
+                The team member who created the project would do the following:
+              </p>
+              <code>$ rm -rf Gemfile.lock</code>
+              <p>
+                This will remove the Gemfile lock file that rails used to figure out what gems and version the project already used.
+              </p>
+              <p>
+                In the .ruby-version file, delete the ruby version there.
+              </p>
+              <p>
+                In the Gemfile file, around line 3, delete the ruby version there.
+              </p>
+              <p>
+                Lastly we are going to put the Gemfile.lock in the .gitignore so git does not conflict in it.
+              </p>
+              <p>
+                Now this team member will push this up into github for the other members to pull or clone.
+              </p>
+              <p>Then everyone will run the following:</p>
+              <code>$ bundle</code>
+              <p>
+                This will rebundle and install all the gems using the ruby version each member has. 
+              </p>
+              <code>$ yarn</code>
+              <p>
+                This will install all javascript packages.
+              </p>
+              <p>
+                Lastly, run the database commands as needed.
+              </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
               active={railsModel}
               onClick={() => setRailsModelOpen(!railsModel)}
             >
@@ -117,6 +165,98 @@ const Rails = () => {
           <br />
           <Accordion styled>
             <Accordion.Title
+              active={migrations}
+              onClick={() => setMigrationsOpen(!migrations)}
+            >
+              Migrations 
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={migrations}>
+              <p>
+                Sometime you want to make changes into the table of the database. Creating a migrations is the best bet.
+              </p>
+              <code>$ bundle exec rails g migration look_up_what_goes_here</code>
+              <p>
+                This will generate a migration file to apply changes.
+              </p>
+              <p>
+                Be sure to look up how to create the migration and what to put in the chhange method in the file. Not all migrations are the same.
+              </p>
+              <p>
+                It is best practice to always run migrations rather than deleting and starting over.
+              </p>
+              <p>
+                For example to add a reference to a child component, you would do:
+              </p>
+              <code>
+                $ bundle exec rails g migration AddParentToChilds parent:references
+              </code>
+              <br />
+              <br />
+              <p>
+                Then in the migration file in the change method there would be
+              </p>
+              <code>
+                add_reference :childs, :parent, foreign_key: true
+              </code>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={dbCom}
+              onClick={() => setDbComOpen(!dbCom)}
+            >
+              Database Commands 
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={dbCom}>
+              <p>
+                Any of the database command below can be used with rails or rack. These command also has to rely on postgresql to be running.
+              </p>
+              <code>$ bundle exec rake db:create</code>
+              <p>
+                This creates two databases, one for the test and the other for the development enviroment.
+              </p>
+              <br />
+              <code>$ bundle exec rake db:migrate</code>
+              <p>
+                This will go into db/migration and run any migrations that haven't been applied yet and apply them to the databases and then create a schema file.
+              </p>
+              <br />
+              <code>$ bundle exec rake db:seed</code>
+              <p>
+               Rails will go into the db/seeds.rb file and run and apply the code in the database.
+              </p>
+              <br />
+              <code>$ bundle exec rake db:drop</code>
+              <p>
+               Be sure that no servers are running when running this command. This will drop and delete all databases and the content and this is permanent.
+              </p>
+              <br />
+              <code>$ bundle exec rake db:rollback</code>
+              <p>
+               Be sure that no servers are running when running this command. This will undo the last migration and go the migration before that or the initial app state.
+              </p>
+              <br />
+              <code>$ bundle exec rails c</code>
+              <p>
+                Rails console command that take you to a irb session within your database and able to run rails and active record lines of code.
+              </p>
+              <p>
+                There are a lot more database commands but the ones above is the most common.
+              </p>
+              <p>
+                You can also chain the database commands in one line instead of multiple lines, such as:
+              </p>
+              <code>$ bundle exec rake db:drop db:create db:migrate db:seed</code>
+              <br />
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
               active={railsController}
               onClick={() => setRailsControllerOpen(!railsController)}
             >
@@ -143,7 +283,8 @@ const Rails = () => {
               </p>
             </Accordion.Content>
           </Accordion>
-          <br />
+        </Grid.Column>
+        <Grid.Column>
           <Accordion styled>
             <Accordion.Title
               active={railsRoutes}
@@ -198,74 +339,6 @@ const Rails = () => {
             </Accordion.Content>
           </Accordion>
           <br />
-          <Accordion styled>
-            <Accordion.Title
-              active={migrations}
-              onClick={() => setMigrationsOpen(!migrations)}
-            >
-              Migrations 
-              <Icon name='dropdown' />
-            </Accordion.Title>
-            <Accordion.Content active={migrations}>
-              <p>
-                Sometime you want to make changes into the table of the database. Creating a migrations is the best bet.
-              </p>
-              <code>$ bundle exec rails g migration look_up_what_goes_here</code>
-              <p>
-                This will generate a migration file to apply changes.
-              </p>
-              <p>
-                Be sure to look up how to create the migration and what to put in the chhange method in the file. Not all migrations are the same.
-              </p>
-              <p>
-                It is best practice to always run migrations rather than deleting and starting over.
-              </p>
-              <p>
-                For example to add a reference to a child component, you would do:
-              </p>
-              <code>
-                $ bundle exec rails g migration AddParentToChilds parent:references
-              </code>
-              <br />
-              <br />
-              <p>
-                Then in the migration file in the change method there would be
-              </p>
-              <code>
-                add_reference :childs, :parent, foreign_key: true
-              </code>
-            </Accordion.Content>
-          </Accordion>
-          <br />
-          <Accordion styled>
-            <Accordion.Title
-              active={appControl}
-              onClick={() => setAppControlOpen(!appControl)}
-            >
-              Application Controller
-              <Icon name='dropdown' />
-            </Accordion.Title>
-            <Accordion.Content active={appControl}>
-              <p>
-                If we see the error of ActionController::InvalidAuthenticityToken when you submit a form, we either need to pass the csrf_token basically everywhere or we can have our rails app ignore it. 
-              </p>
-              <p>
-                Let's do that in our app/controllers/application_controller.rb
-              </p>
-              <code>
-                class ApplicationController &#60; ActionController&#x0003A;&#x0003A;Base
-                <br />&nbsp; protect_from_forgery with: :null_session
-                <br />end
-              </code>
-              <br />
-              <br />
-              <p>
-                This solve that error and allows you to submit forms.
-              </p>
-            </Accordion.Content>
-          </Accordion>
-        </Grid.Column>
-        <Grid.Column>
           <Accordion styled>
             <Accordion.Title
                active={cactions}
@@ -443,6 +516,34 @@ const Rails = () => {
               </code>
               <p>
                 Permitted parameter to be passed into the model.
+              </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={appControl}
+              onClick={() => setAppControlOpen(!appControl)}
+            >
+              Application Controller
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={appControl}>
+              <p>
+                If we see the error of ActionController::InvalidAuthenticityToken when you submit a form, we either need to pass the csrf_token basically everywhere or we can have our rails app ignore it. 
+              </p>
+              <p>
+                Let's do that in our app/controllers/application_controller.rb
+              </p>
+              <code>
+                class ApplicationController &#60; ActionController&#x0003A;&#x0003A;Base
+                <br />&nbsp; protect_from_forgery with: :null_session
+                <br />end
+              </code>
+              <br />
+              <br />
+              <p>
+                This solve that error and allows you to submit forms.
               </p>
             </Accordion.Content>
           </Accordion>
