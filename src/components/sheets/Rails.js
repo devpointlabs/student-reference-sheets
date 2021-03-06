@@ -219,22 +219,27 @@ const Rails = () => {
               <p>
                 This creates two databases, one for the test and the other for the development enviroment.
               </p>
+              <br />
               <code>$ bundle exec rake db:migrate</code>
               <p>
                 This will go into db/migration and run any migrations that haven't been applied yet and apply them to the databases and then create a schema file.
               </p>
+              <br />
               <code>$ bundle exec rake db:seed</code>
               <p>
                Rails will go into the db/seeds.rb file and run and apply the code in the database.
               </p>
+              <br />
               <code>$ bundle exec rake db:drop</code>
               <p>
                Be sure that no servers are running when running this command. This will drop and delete all databases and the content and this is permanent.
               </p>
+              <br />
               <code>$ bundle exec rake db:rollback</code>
               <p>
                Be sure that no servers are running when running this command. This will undo the last migration and go the migration before that or the initial app state.
               </p>
+              <br />
               <code>$ bundle exec rails c</code>
               <p>
                 Rails console command that take you to a irb session within your database and able to run rails and active record lines of code.
