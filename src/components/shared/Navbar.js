@@ -3,7 +3,7 @@ import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => (
-  <Menu>
+  <Menu stackable>
     <Link to="/debug">
       <Menu.Item>
         Debug 
