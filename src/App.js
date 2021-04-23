@@ -6,6 +6,7 @@ import Debug from './components/sheets/Debug';
 import GitFlows from './components/sheets/GitFlows';
 import GitRefs from './components/sheets/GitRefs';
 import Rails from './components/sheets/Rails';
+import Prod from './components/sheets/Prod';
 import RoR from './components/sheets/RoR';
 import { Container } from 'semantic-ui-react';
 import Footer from './components/shared/Footer';
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path='/git-flows' component={GitFlows} />
         <Route exact path='/git-refs' component={GitRefs} />
         <Route exact path='/rails-refs' component={Rails} />
+        <Route exact path='/prod-steps' component={Prod} />
         <Route exact path='/react-on-rails-refs' component={RoR} />
         <Route component={Nomatch} />
       </Switch>

@@ -6,7 +6,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
+    "react-scripts": "4.0.3",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
     "styled-components": "^5.2.1"
@@ -18,7 +18,11 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "no-template-curly-in-string": "off",
+      "react/jsx-no-comment-textnodes": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -31,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "yarn-upgrade-all": "^0.5.4"
   }
 }

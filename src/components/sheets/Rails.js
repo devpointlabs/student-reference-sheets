@@ -18,7 +18,7 @@ const Rails = () => {
 
   return (
     <>
-    <Image src={Logo} centered />
+      <Image src={Logo} centered />
       <Header as='h1' textAlign='center'><BoldColor>Ruby on Rails References</BoldColor></Header>
       <Header as='h5' textAlign='center'><BoldColor>(With a Hint of React)</BoldColor></Header>
       <br />
