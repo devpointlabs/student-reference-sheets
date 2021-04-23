@@ -6,7 +6,7 @@ const Footer = () => (
   <FooterContainer>
     <Segment>
       <CopyRight>
-        © 2019 DevPoint Labs
+        © {new Date().getFullYear()} DevPoint Labs
       </CopyRight>  
     </Segment>
   </FooterContainer>
