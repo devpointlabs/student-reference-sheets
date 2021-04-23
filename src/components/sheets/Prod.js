@@ -51,6 +51,9 @@ const Prod = () => {
               <p>
                 There are other tools to push up to production, and they all have similar and different steps for each of them. All other tools are beyond the scope of this course and is recommended to read documentation and tutorials for the tools.
               </p>
+              <p>
+                (Domain / SSL) You can grab a Domain name and SSL in any major sites, but if you want to connect them to your app on the production server, I would check the tool that you are using and read the documentation of implementation to set one up. Each tool will have different steps and where you got the item will also have different steps too so be sure to read through some docs and maybe some tutorials. Some tools like Netify and Heroku have services offered in their tool and would implement them by follow their steps.
+              </p>
             </Accordion.Content>
           </Accordion>
           <br />
@@ -380,6 +383,15 @@ const Prod = () => {
               </code>
               <p>
                 Lists out all the logging information of deployments. This is one of the ways to debug in the failed depolyment.
+              </p>
+              <h5>
+                Useful Heroku Settings
+              </h5>
+              <p>
+                (GitHub Hook) On the application dashboard, if you go to the "depoly" tab, in the "Deployment method" section, you can "connect to GitHub" to create a hook for when the GitHub master branch is updated then it will auto deploy. Be sure to initially depoly it first before you run this setting. Also if there are any errors in the master branch, that will add the errors to the production site too.
+              </p>
+              <p>
+                (API Keys) If you have API keys in your app, those should and would be hidden so heroku would not know about them and the API tool would not work or the app it self would not work. To add or edit API Keys, in the application dashboard, go to the "setting" tab and in the "Config Vars" section, pressed the "Reveal Config Vars". Then add the key and the value of your API keys one by one by pressing the "add" button. The format of the keys and values should match exactly how you have it in the .env file. 
               </p>
             </Accordion.Content>
           </Accordion>
