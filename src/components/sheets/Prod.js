@@ -252,7 +252,7 @@ const Prod = () => {
               Since we are using an api only Rails application we need to tell Rails how to read a file.
               </p>
               <p>
-                Next we need to add this into our <code>config/routes.js</code>.
+                Next we need to add this into our <code>config/routes.rb</code>.
               </p>
               <code>
                 &#46;
