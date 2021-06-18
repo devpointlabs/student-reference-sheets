@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header, Grid, Accordion, Icon, Image } from 'semantic-ui-react';
 import { BoldColor } from '../../styledComponents/styles';
 import Logo from '../../images/dpl-logo.png';
@@ -10,6 +10,8 @@ const RoR = () => {
   const [collab, setCollabOpen] = useState(true);
   const [cactions, setCactionsOpen] = useState(true);
   const [reactInit, setReactOpen] = useState(true);
+  const [reactWoHooks, setReactWoHooksOpen] = useState(true);
+  const [hooks, setHooksOpen] = useState(true);
 
   return (
     <>
@@ -250,8 +252,7 @@ const RoR = () => {
               </p>
             </Accordion.Content>
           </Accordion>
-        </Grid.Column>
-        <Grid.Column>
+          <br />
           <Accordion styled>
             <Accordion.Title
               active={railsRoutes}
@@ -289,7 +290,7 @@ const RoR = () => {
               active={reactInit}
               onClick={() => setReactOpen(!reactInit)}
             >
-              React JS  
+              React JS CRUD Actions (With out Hooks) 
               <Icon name='dropdown' />
             </Accordion.Title>
             <Accordion.Content active={reactInit}>
@@ -324,9 +325,219 @@ const RoR = () => {
               <p>
                 This connects our front to our back end and it will listen on the port we specify, make sure it is the port your rails server is running.
               </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={collab}
+              onClick={() => setCollabOpen(!collab)}
+            >
+              React on Rails Collab
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={collab}>
+              <p>
+                After the two initial React and Rails project are created, and it is up on Github, everyone else on the team would need to clone down the project and cd into the project to run the following commands
+              </p>
+              <code>$ bundle</code>
+              <p>
+                This will install all ruby gems that are needed for the project. Might run multiple times during the collab process if there are new gems
+              </p>
+              <p>
+                Then run any database that is needed, check rails references for more info.
+              </p>
+              <p>
+                Next, have one panel or tab in the terminal to be in charge of the client side with command + shift + d or command + t, then:
+              </p>
+              <code>
+                $ cd client
+              </code>
+              <br />
+              <code>
+                $ yarn
+              </code>
+              <p>
+                This will grab all the packages that is needed for the client side and would need to run again when there is a change in the package.json
+              </p>
+            </Accordion.Content>
+          </Accordion>
+        </Grid.Column>
+        <Grid.Column>
+          <Accordion styled>
+            <Accordion.Title
+              active={hooks}
+              onClick={() => setHooksOpen(!hooks)}
+            >
+              React JS CRUD Actions (With Hooks) 
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={hooks}>
+              <p>
+                After the rails end is done, it's time to do the front of of reactjs, so in the same directory, run this command
+              </p>
+              <code>
+                $ yarn create react-app client
+              </code>
+              <p>
+                This will create a react project in our rails project and call it client, since it will store everything on our client side.
+              </p>
+              <p>
+                After the react side is fully created, in another tab or panel 
+              </p>
+              <code>
+                $ cd client
+              </code>
+              <br />
+              <p>
+                Next is to set up the proxy in <i>client/package.json</i> and this is on top of the script tag.
+              </p>
+              <code>
+              ....
+              <br />
+              "proxy"&#58; "http://localhost:3001",
+              <br />
+              "scripts"&#58; &#123;
+              <br />
+              ....
+              </code>
+              <p>
+                This connects our front to our back end and it will listen on the port we specify, make sure it is the port your rails server is running.
+              </p>
               <br />
               <p>
                 The last step would be to make api calls to our back end, the logic should be placed in a higher order component or in a provider to be passed down to components. The process will also change base on if it is a parent or child element for the api call.
+              </p>
+              <code>
+                ....
+                <br />
+                import &#123; useState, useEffect &#125; from 'react' 
+                <br />
+                import axios from "axios";
+                <br />
+                ....
+                <br />
+                &nbsp; const &#91;modelNames, setModelNames&#93; &#61; useState&#40;&#91;&#93;&#41;	
+                <br />
+                <br />
+                &nbsp; useEffect&#40; &#40;&#41; &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; axios.get&#40;"/api/controllerNames"&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; this.setState(&#123; modelNames&#58; res.data &#125;&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; &#125;&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; .catch&#40; err &#61;&#62; console.log&#40;err&#41; &#41;
+                <br />
+                &nbsp; &#125;, &#91;&#93;&#41;
+              </code>
+              <p>
+                This is one of the ways to grab all the records from the backend and put it in the front end. The url will change depending on controller and action
+              </p>
+              <br />
+              <code>
+                &nbsp; const addModel &#61; &#40;modelName&#41; &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; axios.post&#40;"/api/controllerNames"&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; const &#123; modelNames &#125;  &#61; this.state
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; this.setState&#40;&#123; 
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; modelNames&#58; &#91;...res.data, modelName&#93; 
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
+                <br />
+                &nbsp; &nbsp; &nbsp; &#125;&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; .catch&#40; err &#61;&#62; console.log&#40;err&#41; &#41;
+                <br /> 
+                &nbsp; &#125;
+              </code>
+              <p>
+                This would add to the backend, passing in the data object and then add the item in the frontend with the rest of the items that was already there.
+              </p>
+              <p>
+                *What you are passing in, within the private params of the controller, should match exactly of how you pass it in on the second line. 
+              </p>
+              <br />
+              <code>
+                &nbsp; const updateModel &#61; &#40;modelName&#41; &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; axios.put&#40;&#96;/api/controllerNames/&#36;&#123;id&#125;&#96;&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; const &#123; modelNames &#125; &#61; this.state.modelNames.map&#40; m &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if &#40;m.id &#61;&#61;&#61; id&#41; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return res.data 
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#125;
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return m
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; this.setState&#40;&#123; modelNames &#125;&#41; 
+                <br />
+                &nbsp; &nbsp; &nbsp; &#125;&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; .catch&#40; err &#61;&#62; console.log&#40;err&#41; &#41;
+                <br /> 
+                &nbsp; &#125;
+              </code>
+              <p>
+                This would update the item in the backend, then we are looping through the items in the frontend and find the one we are updating and then update the value.
+              </p>
+              <p>
+                *What you are passing in, within the private params of the controller, should match exactly of how you pass it in on the second line. 
+              </p>
+              <br />
+              <code>
+                &nbsp; const deleteModel &#61; &#40;id&#41; &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; axios.delete&#40;&#96;/api/controllerNames/&#36;&#123;id&#125;&#96;&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; const &#123; modelNames &#125;  &#61; this.state
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; this.setState&#40;&#123; 
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; modelNames&#58; modelNames.filter&#40; m &#61;&#62; m.id &#33;&#61;&#61; id&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
+                <br />
+                &nbsp; &nbsp; &nbsp; &#125;&#41;
+                <br />
+                &nbsp; &nbsp; &nbsp; .catch&#40; err &#61;&#62; console.log&#40;err&#41; &#41;
+                <br /> 
+                &nbsp; &#125;
+              </code>
+              <p>
+                  This would delete the item in the backend with the given id and then delete the item in the frontend by filtering the item out and keeping the rest in.
+              </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={reactWoHooks}
+              onClick={() => setReactWoHooksOpen(!reactWoHooks)}
+            >
+              React JS CRUD Actions (Without Hooks) 
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={reactWoHooks}>
+              <p>
+                The next step would be to make api calls to our back end, the logic should be placed in a higher order component or in a provider to be passed down to components. The process will also change base on if it is a parent or child element for the api call.
               </p>
               <code>
                 ....
@@ -441,41 +652,6 @@ const RoR = () => {
               </code>
               <p>
                   This would delete the item in the backend with the given id and then delete the item in the frontend by filtering the item out and keeping the rest in.
-              </p>
-            </Accordion.Content>
-          </Accordion>
-          <br />
-          <Accordion styled>
-            <Accordion.Title
-              active={collab}
-              onClick={() => setCollabOpen(!collab)}
-            >
-              React on Rails Collab
-              <Icon name='dropdown' />
-            </Accordion.Title>
-            <Accordion.Content active={collab}>
-              <p>
-                After the two initial React and Rails project are created, and it is up on Github, everyone else on the team would need to clone down the project and cd into the project to run the following commands
-              </p>
-              <code>$ bundle</code>
-              <p>
-                This will install all ruby gems that are needed for the project. Might run multiple times during the collab process if there are new gems
-              </p>
-              <p>
-                Then run any database that is needed, check rails references for more info.
-              </p>
-              <p>
-                Next, have one panel or tab in the terminal to be in charge of the client side with command + shift + d or command + t, then:
-              </p>
-              <code>
-                $ cd client
-              </code>
-              <br />
-              <code>
-                $ yarn
-              </code>
-              <p>
-                This will grab all the packages that is needed for the client side and would need to run again when there is a change in the package.json
               </p>
             </Accordion.Content>
           </Accordion>
