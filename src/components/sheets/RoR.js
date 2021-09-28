@@ -300,6 +300,14 @@ const RoR = () => {
               <code>
                 $ yarn create react-app client
               </code>
+              <br />
+              <br />
+              <p>
+                Or you can do 
+              </p>
+              <code>
+                $ create-react-app client
+              </code>
               <p>
                 This will create a react project in our rails project and call it client, since it will store everything on our client side.
               </p>
@@ -374,38 +382,6 @@ const RoR = () => {
             </Accordion.Title>
             <Accordion.Content active={hooks}>
               <p>
-                After the rails end is done, it's time to do the front of of reactjs, so in the same directory, run this command
-              </p>
-              <code>
-                $ yarn create react-app client
-              </code>
-              <p>
-                This will create a react project in our rails project and call it client, since it will store everything on our client side.
-              </p>
-              <p>
-                After the react side is fully created, in another tab or panel 
-              </p>
-              <code>
-                $ cd client
-              </code>
-              <br />
-              <p>
-                Next is to set up the proxy in <i>client/package.json</i> and this is on top of the script tag.
-              </p>
-              <code>
-              ....
-              <br />
-              "proxy"&#58; "http://localhost:3001",
-              <br />
-              "scripts"&#58; &#123;
-              <br />
-              ....
-              </code>
-              <p>
-                This connects our front to our back end and it will listen on the port we specify, make sure it is the port your rails server is running.
-              </p>
-              <br />
-              <p>
                 The last step would be to make api calls to our back end, the logic should be placed in a higher order component or in a provider to be passed down to components. The process will also change base on if it is a parent or child element for the api call.
               </p>
               <code>
@@ -426,7 +402,7 @@ const RoR = () => {
                 <br />
                 &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; this.setState(&#123; modelNames&#58; res.data &#125;&#41;
+                &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;res.data&#41;
                 <br />
                 &nbsp; &nbsp; &nbsp; &#125;&#41;
                 <br />
@@ -441,15 +417,11 @@ const RoR = () => {
               <code>
                 &nbsp; const addModel &#61; &#40;modelName&#41; &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; axios.post&#40;"/api/controllerNames"&#41;
+                &nbsp; &nbsp; &nbsp; axios.post&#40;"/api/controllerNames"&#44; &#123; modelName &#125;&#41;
                 <br />
                 &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; const &#123; modelNames &#125;  &#61; this.state
-                <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; this.setState&#40;&#123; 
-                <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; modelNames&#58; &#91;...res.data, modelName&#93; 
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;&#91;...res.data, modelName&#93;&#41;
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
                 <br />
@@ -467,13 +439,13 @@ const RoR = () => {
               </p>
               <br />
               <code>
-                &nbsp; const updateModel &#61; &#40;modelName&#41; &#61;&#62; &#123;
+                &nbsp; const updateModel &#61; &#40;id, modelName&#41; &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; axios.put&#40;&#96;/api/controllerNames/&#36;&#123;id&#125;&#96;&#41;
+                &nbsp; &nbsp; &nbsp; axios.put&#40;&#96;/api/controllerNames/&#36;&#123;id&#125;&#96;&#44; &#123; modelName &#125;&#41;
                 <br />
                 &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; const &#123; modelNames &#125; &#61; this.state.modelNames.map&#40; m &#61;&#62; &#123;
+                &nbsp; &nbsp; &nbsp; &nbsp; let updatedModelNames &#61; modelNames.map&#40; m &#61;&#62; &#123;
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if &#40;m.id &#61;&#61;&#61; id&#41; &#123;
                 <br />
@@ -485,7 +457,7 @@ const RoR = () => {
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; this.setState&#40;&#123; modelNames &#125;&#41; 
+                &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;updatedModelNames&#41; 
                 <br />
                 &nbsp; &nbsp; &nbsp; &#125;&#41;
                 <br />
@@ -507,11 +479,7 @@ const RoR = () => {
                 <br />
                 &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; const &#123; modelNames &#125;  &#61; this.state
-                <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; this.setState&#40;&#123; 
-                <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; modelNames&#58; modelNames.filter&#40; m &#61;&#62; m.id &#33;&#61;&#61; id&#41;
+                &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;modelNames.filter&#40; m &#61;&#62; m.id &#33;&#61;&#61; id&#41;&#41;
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
                 <br />
@@ -523,6 +491,25 @@ const RoR = () => {
               </code>
               <p>
                   This would delete the item in the backend with the given id and then delete the item in the frontend by filtering the item out and keeping the rest in.
+              </p>
+              <p>
+                For any components that have a parent and child relationship the pattern of the axios call is slightly changed to have both the parent and the child. This also assumes that you are passing the parent's id somehow.
+              </p>
+              <p>
+                For example:
+              </p>
+              <code>
+                ...
+                <br />
+                &nbsp; &nbsp; &nbsp; axios.delete&#40;&#96;/api/parentNames/&#36;&#123;parentId&#125;/childNames/&#123;id&#125;&#96;&#41;
+                <br />
+                ...
+              </code>
+              <p>
+                For reference, use the api routes to see what the url would be, and the routes should have both the parent and child in the route not just the child. So only use the child routes that have the parent in the routes.
+              </p>
+              <p>
+                You would repeat the pattern for all levels of the object tree and the implementation would change based off of what the designs and the requirements are for the project.
               </p>
             </Accordion.Content>
           </Accordion>
