@@ -306,7 +306,7 @@ const RoR = () => {
                 Or you can do 
               </p>
               <code>
-                $ create-react-app client
+                $ npx create-react-app client
               </code>
               <p>
                 This will create a react project in our rails project and call it client, since it will store everything on our client side.
