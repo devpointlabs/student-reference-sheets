@@ -10,8 +10,9 @@ const RoR = () => {
   const [collab, setCollabOpen] = useState(true);
   const [cactions, setCactionsOpen] = useState(true);
   const [reactInit, setReactOpen] = useState(true);
-  const [reactWoHooks, setReactWoHooksOpen] = useState(true);
+  const [reactWoHooks, setReactWoHooksOpen] = useState(false);
   const [hooks, setHooksOpen] = useState(true);
+  const [rorServer, setRorServerOpen] = useState(true);
 
   return (
     <>
@@ -639,6 +640,58 @@ const RoR = () => {
               </code>
               <p>
                   This would delete the item in the backend with the given id and then delete the item in the frontend by filtering the item out and keeping the rest in.
+              </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={rorServer}
+              onClick={() => setRorServerOpen(!rorServer)}
+            >
+              React on Rails Servers
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={rorServer}>
+              <p>
+                When you want to start your server you would need to start two of them, one for your front end and one for your backend. Be sure to connect to a power source since this does drain a lot of power. 
+              </p>
+              <p>
+                In your root project directory in the terminal: 
+              </p>
+              <code>
+                bundle exec rails s -p 3001
+              </code>
+              <p>
+                Note, if your proxy is something else then change it so these two numbers match. 
+              </p>
+              <p>
+                Next in another tab ( command + t ) or a new panel ( command + shift + d ) be sure to be in the client folder.
+              </p>
+              <code>
+                cd client
+              </code>
+              <br />
+              <br />
+              <p>
+                Then run: 
+              </p>
+              <code>
+                yarn start
+              </code>
+              <br />
+              <br />
+              <p>
+                Now both servers are running, and but needs to run if we want our app to work.
+              </p>
+              <p>
+                If you want to do any rails commands or backend commands, then it would be the root folder. If you want to do anything with yarn and the front end then it would be in the client folder. Sometimes you would need to restart the server to have changes take effect.
+              </p>
+              <p>
+                When you want to do the git flow, be sure to do it in the root folder so it captures everything in the whole project.
+              </p>
+              <p>
+                To stop the server ( control + c )
               </p>
             </Accordion.Content>
           </Accordion>
