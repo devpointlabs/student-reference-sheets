@@ -49,7 +49,7 @@ const RoR = () => {
                 Short for bundle install and install all the gems in the project, be sure to check the gem documentation to see if there is any other configuration
               </p>
               <br />
-              <code>$ bundle exec rake db:create</code>
+              <code>$ bundle exec rails db:create</code>
               <p>
                 This creates both the development and testing database. You can use rake or rails.
               </p>
@@ -291,7 +291,7 @@ const RoR = () => {
               active={reactInit}
               onClick={() => setReactOpen(!reactInit)}
             >
-              React JS CRUD Actions (With out Hooks) 
+              React JS Creation 
               <Icon name='dropdown' />
             </Accordion.Title>
             <Accordion.Content active={reactInit}>

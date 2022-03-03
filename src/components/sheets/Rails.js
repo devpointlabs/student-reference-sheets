@@ -215,27 +215,27 @@ const Rails = () => {
               <p>
                 Any of the database command below can be used with rails or rack. These command also has to rely on postgresql to be running.
               </p>
-              <code>$ bundle exec rake db:create</code>
+              <code>$ bundle exec rails db:create</code>
               <p>
                 This creates two databases, one for the test and the other for the development enviroment.
               </p>
               <br />
-              <code>$ bundle exec rake db:migrate</code>
+              <code>$ bundle exec rails db:migrate</code>
               <p>
                 This will go into db/migration and run any migrations that haven't been applied yet and apply them to the databases and then create a schema file.
               </p>
               <br />
-              <code>$ bundle exec rake db:seed</code>
+              <code>$ bundle exec rails db:seed</code>
               <p>
                Rails will go into the db/seeds.rb file and run and apply the code in the database.
               </p>
               <br />
-              <code>$ bundle exec rake db:drop</code>
+              <code>$ bundle exec rails db:drop</code>
               <p>
                Be sure that no servers are running when running this command. This will drop and delete all databases and the content and this is permanent.
               </p>
               <br />
-              <code>$ bundle exec rake db:rollback</code>
+              <code>$ bundle exec rails db:rollback</code>
               <p>
                Be sure that no servers are running when running this command. This will undo the last migration and go the migration before that or the initial app state.
               </p>
@@ -250,7 +250,7 @@ const Rails = () => {
               <p>
                 You can also chain the database commands in one line instead of multiple lines, such as:
               </p>
-              <code>$ bundle exec rake db:drop db:create db:migrate db:seed</code>
+              <code>$ bundle exec rails db:drop db:create db:migrate db:seed</code>
               <br />
             </Accordion.Content>
           </Accordion>
