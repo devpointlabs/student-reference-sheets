@@ -51,6 +51,13 @@ const GitFlows = () => {
               <p>
                 Uploads local machine repository’s commits into Github.
               </p>
+              <p>
+                or 
+              </p>
+              <code>$ git push origin main</code>
+              <p>
+                if the master branch is named something else.
+              </p>
             </Accordion.Content>
           </Accordion>
           <br />
@@ -76,11 +83,20 @@ const GitFlows = () => {
               <br />
               <code>$ git push origin master</code>
               <br />
-              <br />
+              <p>
+                or 
+              </p>
+              <code>$ git push origin main</code>
+              <p>
+                if the master branch is named something else.
+              </p>
               <p>
                 or
               </p>
               <code>$ git push origin branch_name</code>
+              <p>
+                To push in your own branch
+              </p>
             </Accordion.Content>
           </Accordion>
         </Grid.Column>
@@ -104,6 +120,10 @@ const GitFlows = () => {
               <p>
                 Downloads the latest version from Github to local machine. 
               </p>
+              <p>
+                Then you and your team would work together and plan for what each person is doing, and after you all would work in your own branch
+              </p>
+              <code>$ git checkout -b branch_name</code>
             </Accordion.Content>
           </Accordion>
           <br />
@@ -129,7 +149,7 @@ const GitFlows = () => {
               <code>$ git commit -m “What you did”</code>
               <p></p>
               <p>
-                The next step is to get your code up to date with github. 
+                The next step is to get your code up to date with github. So you would need to do this twice, one on your master branch and one on your own branch.
               </p>
               <code>$ git fetch origin master</code>
               <p>
