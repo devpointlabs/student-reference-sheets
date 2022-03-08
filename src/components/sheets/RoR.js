@@ -209,7 +209,7 @@ const RoR = () => {
                 def destroy
                   <br />  
                   &nbsp;
-                  Model_name.find(params[:id]).destroy
+                  @model_name = Model_name.find(params[:id])
                   <br />  
                   &nbsp;
                   @model_name.destroy
