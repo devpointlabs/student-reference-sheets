@@ -13,6 +13,9 @@ const RoR = () => {
   const [reactWoHooks, setReactWoHooksOpen] = useState(false);
   const [hooks, setHooksOpen] = useState(true);
   const [rorServer, setRorServerOpen] = useState(true);
+  const [railsModel, setRailsModelOpen] = useState(true);
+  const [migrations, setMigrationsOpen] = useState(true);
+  const [dbCom, setDbComOpen] = useState(true);
 
   return (
     <>
@@ -64,9 +67,143 @@ const RoR = () => {
               <p>
                 The final house keeping is to plan out how the tables look like with what it has and types of associations it has. But way is to draw it out and plan it with your group.
               </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={railsModel}
+              onClick={() => setRailsModelOpen(!railsModel)}
+            >
+              Rails Model 
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={railsModel}>
               <p>
-                *Generating models, migrations, db commands are the same in this type of project, check rails references for more info.
+                After your done planning, now its time to build the instructions for the tables.
               </p>
+              <code>$ bundle exec rails g model model_name attr:datatype attr:datatype</code>
+              <p>
+                This generates the model and the migration file. Be sure the Model name is SINGULAR. 
+              </p>
+              <p>
+                * Models are singular and Controllers are plural.
+              </p>
+              <code>$ bundle exec rails g model model_name attr:datatype parent:belongs_to</code>
+              <p>
+                If the table has a belongs to association then you would state that here so the foreign key is made.
+              </p>
+              <p>
+                After you generate a model, and check to make sure everything is correct in the migration files are correct.
+              </p>
+              <p>
+                If you mess up on the model, you can delete it with the following command and retry the above command.  
+              </p>
+              <code>$ bundle exec rails d model model_name</code>
+              <p>
+                This deletes the model and the associated migration.
+              </p>
+              <br />
+              <p>
+                When everything is correct run a:
+              </p>
+              <code>
+                $ bundle exec rake db:migrate
+              </code>
+              <p>
+                This apply the instructions of the migration file into the database.
+              </p>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={migrations}
+              onClick={() => setMigrationsOpen(!migrations)}
+            >
+              Migrations 
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={migrations}>
+              <p>
+                Sometime you want to make changes into the table of the database. Creating a migrations is the best bet.
+              </p>
+              <code>$ bundle exec rails g migration look_up_what_goes_here</code>
+              <p>
+                This will generate a migration file to apply changes.
+              </p>
+              <p>
+                Be sure to look up how to create the migration and what to put in the chhange method in the file. Not all migrations are the same.
+              </p>
+              <p>
+                It is best practice to always run migrations rather than deleting and starting over.
+              </p>
+              <p>
+                For example to add a reference to a child component, you would do:
+              </p>
+              <code>
+                $ bundle exec rails g migration AddParentToChilds parent:references
+              </code>
+              <br />
+              <br />
+              <p>
+                Then in the migration file in the change method there would be
+              </p>
+              <code>
+                add_reference :childs, :parent, foreign_key: true
+              </code>
+            </Accordion.Content>
+          </Accordion>
+          <br />
+          <Accordion styled>
+            <Accordion.Title
+              active={dbCom}
+              onClick={() => setDbComOpen(!dbCom)}
+            >
+              Database Commands 
+              <Icon name='dropdown' />
+            </Accordion.Title>
+            <Accordion.Content active={dbCom}>
+              <p>
+                Any of the database command below can be used with rails or rack. These command also has to rely on postgresql to be running.
+              </p>
+              <code>$ bundle exec rails db:create</code>
+              <p>
+                This creates two databases, one for the test and the other for the development enviroment.
+              </p>
+              <br />
+              <code>$ bundle exec rails db:migrate</code>
+              <p>
+                This will go into db/migration and run any migrations that haven't been applied yet and apply them to the databases and then create a schema file.
+              </p>
+              <br />
+              <code>$ bundle exec rails db:seed</code>
+              <p>
+               Rails will go into the db/seeds.rb file and run and apply the code in the database.
+              </p>
+              <br />
+              <code>$ bundle exec rails db:drop</code>
+              <p>
+               Be sure that no servers are running when running this command. This will drop and delete all databases and the content and this is permanent.
+              </p>
+              <br />
+              <code>$ bundle exec rails db:rollback</code>
+              <p>
+               Be sure that no servers are running when running this command. This will undo the last migration and go the migration before that or the initial app state.
+              </p>
+              <br />
+              <code>$ bundle exec rails c</code>
+              <p>
+                Rails console command that take you to a irb session within your database and able to run rails and active record lines of code.
+              </p>
+              <p>
+                There are a lot more database commands but the ones above is the most common.
+              </p>
+              <p>
+                You can also chain the database commands in one line instead of multiple lines, such as:
+              </p>
+              <code>$ bundle exec rails db:drop db:create db:migrate db:seed</code>
+              <br />
             </Accordion.Content>
           </Accordion>
           <br />
@@ -248,13 +385,60 @@ const RoR = () => {
               <p>
                 Permitted parameter to be passed into the model. This should match what is being passed from the React end.
               </p>
+              <br />
               <p>
-                *If there is a parent to child relationship then the child controller will follow a similiar but different pattern, check rails references for more info. 
+                If there is a parent to child relationship then the child controller will follow a similiar but different pattern.
               </p>
+              <p>
+                To define what at parent is, you would need to do a before action and define the method in the private section.
+              </p>
+              <code>
+                before_action :set_parent 
+              </code>
+              <p>
+                .
+                <br />
+                .
+                <br />
+                .
+              </p>
+              <code>
+                private 
+                  <br />  
+                  &nbsp;
+                  def set_parent
+                    <br />  
+                    &nbsp;
+                    &nbsp;
+                    @parent = Model_name_of_parent.find(params[:parent_id])
+                    <br />  
+                    &nbsp;
+                  end
+              </code>
+              <br />
+              <br />
+              <code>Model_name.all</code>
+              <p>
+                Anything with the capital letter Model_name will change to:
+              </p>
+              <code>
+                @parent.children(s)
+              </code>
+              <p>
+                The parents instance variable and calling its child plural.
+              </p>
+              <p>
+                * The index method in a child controller does not have the .all at the end.
+              </p>              
+              <br />
+              <br />
             </Accordion.Content>
           </Accordion>
           <br />
-          <Accordion styled>
+
+        </Grid.Column>
+        <Grid.Column>
+        <Accordion styled>
             <Accordion.Title
               active={railsRoutes}
               onClick={() => setRailsRoutesOpen(!railsRoutes)}
@@ -281,7 +465,35 @@ const RoR = () => {
                 This generates all the routes for the actions index, show, create, update and destroy all in the api name space, and be sure all of your routes are in the api section.
               </p>
               <p>
-                All else about the routes are the same, check rails references for more info.
+                You can include or exclude certain actions like this:
+              </p>
+              <code>resources :controller_names, only: [:index, :new, :create]</code>
+              <p>
+                or
+              </p>
+              <code>resources :controller_names, except: [:show, :edit, :update]</code>
+              <br />
+              <br />
+              <br />
+              <p>
+                If you are showing a parent to child view you may need to do embedded routes.
+              </p>
+              <code>
+                resources :parents do 
+                <br />  
+                &nbsp; resources :child
+                <br /> 
+                end
+              </code>
+              <p>
+                * Don't go more than two levels deep because it will get messy, do another set of embedded routes when needed.
+              </p>
+              <p>
+                Often times you would want to make your own custom routes which follows this pattern:
+              </p>
+              <code>HTTPVERB '/something', to: 'controllers#action', as: 'anotherThing'</code>
+              <p>
+                You would specify what HTTP verb action you want to preform, what the url to get to the route, where the route goes to and how to reference to path in ruby.
               </p>
             </Accordion.Content>
           </Accordion>
@@ -371,8 +583,7 @@ const RoR = () => {
               </p>
             </Accordion.Content>
           </Accordion>
-        </Grid.Column>
-        <Grid.Column>
+          <br />
           <Accordion styled>
             <Accordion.Title
               active={hooks}
