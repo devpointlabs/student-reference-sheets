@@ -633,7 +633,7 @@ const RoR = () => {
                 <br />
                 &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;&#91;...res.data, modelName&#93;&#41;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;&#91;...modelName, res.data&#93;&#41;
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
                 <br />
@@ -657,7 +657,7 @@ const RoR = () => {
                 <br />
                 &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; let updatedModelNames &#61; modelNames.map&#40; m &#61;&#62; &#123;
+                &nbsp; &nbsp; &nbsp; &nbsp; let newUpdatedModelNames &#61; modelNames.map&#40; m &#61;&#62; &#123;
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if &#40;m.id &#61;&#61;&#61; id&#41; &#123;
                 <br />
@@ -669,7 +669,7 @@ const RoR = () => {
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;updatedModelNames&#41; 
+                &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;newUpdatedModelNames&#41; 
                 <br />
                 &nbsp; &nbsp; &nbsp; &#125;&#41;
                 <br />
