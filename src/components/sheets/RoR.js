@@ -54,7 +54,7 @@ const RoR = () => {
               <br />
               <code>$ bundle exec rails db:create</code>
               <p>
-                This creates both the development and testing database. You can use rake or rails.
+                This creates both the development and testing database.
               </p>
               <br />
               <code>$ bundle exec rails g controller static index --skip-routes</code>
@@ -108,7 +108,7 @@ const RoR = () => {
                 When everything is correct run a:
               </p>
               <code>
-                $ bundle exec rake db:migrate
+                $ bundle exec rails db:migrate
               </code>
               <p>
                 This apply the instructions of the migration file into the database.

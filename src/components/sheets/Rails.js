@@ -58,9 +58,9 @@ const Rails = () => {
               <br />
               <br />
               <br />
-              <code>$ bundle exec rake db:create</code>
+              <code>$ bundle exec rails db:create</code>
               <p>
-                This creates both the development and testing database. You can use rake or rails.
+                This creates both the development and testing database.
               </p>
               <p>
                 Then follow the git flow for the initial push but you don't need the git init part since rails does that for you.
@@ -155,7 +155,7 @@ const Rails = () => {
                 When everything is correct run a:
               </p>
               <code>
-                $ bundle exec rake db:migrate
+                $ bundle exec rails db:migrate
               </code>
               <p>
                 This apply the instructions of the migration file into the database.
