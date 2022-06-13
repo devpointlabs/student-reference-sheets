@@ -633,7 +633,7 @@ const RoR = () => {
                 <br />
                 &nbsp; &nbsp; &nbsp; .then&#40; res &#61;&#62; &#123;
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;&#91;...modelName, res.data&#93;&#41;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; setModelNames&#40;&#91;...modelNames, res.data&#93;&#41;
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
                 <br />
@@ -777,7 +777,7 @@ const RoR = () => {
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; this.setState&#40;&#123; 
                 <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; modelNames&#58; &#91;...res.data, modelName&#93; 
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; modelNames&#58; &#91;...modelNames, res.data&#93; 
                 <br />
                 &nbsp; &nbsp; &nbsp; &nbsp; &#125;&#41; 
                 <br />
