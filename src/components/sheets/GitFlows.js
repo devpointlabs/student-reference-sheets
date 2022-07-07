@@ -151,11 +151,11 @@ const GitFlows = () => {
               <p>
                 The next step is to get your code up to date with github. So you would need to do this twice, one on your master branch and one on your own branch.
               </p>
-              <code>$ git fetch origin master</code>
+              <code>$ git fetch origin main</code>
               <p>
                 Grabs the code on Github and brings it to the local machine. 
               </p>
-              <code>$ git rebase origin/master</code>
+              <code>$ git rebase origin/main</code>
               <p>
                 Combines the local version and the Github version. 
               </p>
