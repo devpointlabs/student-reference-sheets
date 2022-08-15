@@ -108,13 +108,13 @@ const GitRefs = () => {
                 <br />
                 Then update or add the commit message.
               </p>
-              <code>Type: ESC</code>
+              <code>Press: ESC</code>
               <p>
                 This gets you out of Insert mode and into command mode.
               </p>
-              <code>Type: :wq      shift + ; + w + q</code>
+              <code>Type: :wq</code>
               <p>
-                Saves and quits. 
+                When you press :wq (shift + ; + w + q) this will Saves and quits. 
               </p>
             </Accordion.Content>
           </Accordion>
